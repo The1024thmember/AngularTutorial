@@ -1,0 +1,41 @@
+.app-two-way-binding {
+    border: 2px solid red;
+    margin-bottom: 10px;
+}
+
+.app-ref {
+    border: 2px solid purple;
+    margin-bottom: 10px;
+}
+
+.app-ref-toggle {
+    border: 2px solid green;
+    margin-bottom: 10px;
+}
+
+.app-looping {
+    border: 2px solid blue;
+    margin-bottom: 10px;
+}
+
+
+.status {
+    width:10px;
+    height: 10px;
+    background-color: red;
+    display: block;
+    margin: 8px 10px 0 0;
+    float:left;
+    border-radius: 50%;
+    &.check-in{ //this means .status.check-in
+        background-color: green;
+    }
+    &.check-out{ //this means .status.check-in
+        background-color: blue;
+    }
+}
+
+.app-pipe {
+    border: 2px solid black;
+    margin-bottom: 10px;   
+}
