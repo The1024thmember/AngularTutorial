@@ -49,7 +49,14 @@ export class PassengerDetail implements OnChanges, OnInit{
     ngOnChanges(changes: SimpleChanges): void {
         console.log(changes);
         if(changes["mydetail"]){
-            this.mydetail = Object.assign({},changes["mydetail"].currentValue);
+           /* this.mydetail = Object.assign({},{            
+                id:2,
+                fullname:'Rose',
+                checkedIn: false,
+                checkInDate:1491606000000,
+                children:null});
+            */
+           this.mydetail = Object.assign({},changes["mydetail"].currentValue);
         }
         console.log("ngOnChanges");
     }
