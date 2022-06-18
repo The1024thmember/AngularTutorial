@@ -7,12 +7,15 @@ import { Passenger } from "../../models/passenger.interface";
     styleUrls: ['passenger.dashboard.component.scss'],
     template:`
         <div class="app-nav">
+            <div *ngFor="let passenger of passengers">
+                {{ passenger.fullname }}
+            </div>
             <passenger-count
                 [items] = "passengers"
             ></passenger-count>
             <passenger-detail
                 *ngFor="let passenger of passengers"
-                [details] = "passenger"
+                [mydetail] = "passenger"
                 (edit) = "handleEdit($event)"
                 (remove) = "handleRemove($event)"
             ></passenger-detail>
@@ -57,11 +60,18 @@ export class PassengerDashboardsComponent implements OnInit{
         ]
     }
 
-    handleRemove(event:any){
+    handleRemove(event:Passenger){
+        this.passengers = this.passengers.filter((passenger:Passenger)=> passenger.id !== event.id)
         console.log(event);
     }
 
-    handleEdit(event:any){
-        console.log(event);
+    handleEdit(event:Passenger){
+        this.passengers = this.passengers.map((passenger: Passenger)=>{
+            if (passenger.id === event.id){
+                passenger = Object.assign({}, passenger, event);
+            }
+            return passenger;
+        })
+        console.log(this.passengers);
     }
 }

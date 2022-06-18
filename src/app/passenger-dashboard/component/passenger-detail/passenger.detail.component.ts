@@ -1,5 +1,5 @@
 import { outputAst } from "@angular/compiler";
-import { Component, Input, Output , EventEmitter} from "@angular/core";
+import { Component, Input, Output , EventEmitter, OnChanges, SimpleChanges, OnInit} from "@angular/core";
 import { Passenger } from "../../models/passenger.interface";
 
 
@@ -10,21 +10,21 @@ import { Passenger } from "../../models/passenger.interface";
         <div class="app-nav">
             detail component
             <span class = "status" 
-                [class.check-in] = "details.checkedIn"
+                [class.check-in] = "mydetail.checkedIn"
                 ></span>
                 <div *ngIf = "editing">
                     <input 
                         type = "text" 
-                        [value]="details.fullname"
+                        [value]="mydetail.fullname"
                         (input)="onNameChange(name.value)"
                         #name
                     >
                 </div>
-                <div>{{details.fullname}}</div>
-                <p>{{ details | json }}</p>
-                <div>{{ details.checkInDate ? (details.checkInDate | date: 'yMMMMd' | uppercase) : "not checked in" }}</div>
+                <div>{{mydetail.fullname}}</div>
+                <p>{{ mydetail | json }}</p>
+                <div>{{ mydetail.checkInDate ? (mydetail.checkInDate | date: 'yMMMMd' | uppercase) : "not checked in" }}</div>
                 <div>
-                        children: {{ details.children?.length || 0 }}
+                        children: {{ mydetail.children?.length || 0 }}
                 </div>
                 <button (click)="toggleCLick()">{{ editing? "Done" : "Edit" }}</button>
                 <button (click)="onRemove()">remove</button>
@@ -32,9 +32,9 @@ import { Passenger } from "../../models/passenger.interface";
         </div>
     `
 })
-export class PassengerDetail{
+export class PassengerDetail implements OnChanges, OnInit{
     @Input()
-    details: Passenger;
+    mydetail: Passenger;
 
     @Output()
     remove:EventEmitter<any> = new EventEmitter();
@@ -43,18 +43,31 @@ export class PassengerDetail{
     edit:EventEmitter<any> = new EventEmitter();
 
     editing: boolean = false;
+
     constructor(){};
-    onNameChange(name:string){
+
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log(changes);
+        if(changes["mydetail"]){
+            this.mydetail = Object.assign({},changes["mydetail"].currentValue);
+        }
+        console.log("ngOnChanges");
+    }
+
+    ngOnInit(): void {
+        console.log("oninit");
+    }
+    onNameChange(name:string){ //everytime when we change the value of a local componenet, we are changing the initial reference to the object
         console.log(name);
-        this.details.fullname = name;
+        this.mydetail.fullname = name;
     }
     toggleCLick(){
         if(this.editing){
-            this.edit.emit(this.details);
+            this.edit.emit(this.mydetail);
         }
         this.editing = !this.editing;
     }
     onRemove(){
-        this.remove.emit(this.details);
+        this.remove.emit(this.mydetail);
     }
 }
