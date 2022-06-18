@@ -1,7 +1,7 @@
 import { Component, ɵflushModuleScopingQueueAsMuchAsPossible } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
+  selector: 'two-way-binding',
   styleUrls: ['app.component.scss'],
   template:`
     <div class="app-two-way-binding">
@@ -24,7 +24,7 @@ import { Component, ɵflushModuleScopingQueueAsMuchAsPossible } from "@angular/c
     </div>
   `
 })
-export class AppComponent {
+export class TwoWayBindingcomponent {
   title:string;
   ishappy: boolean = true;
   numberOne: number = 1;

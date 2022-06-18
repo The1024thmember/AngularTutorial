@@ -1,0 +1,14 @@
+.status {
+    width:10px;
+    height: 10px;
+    background-color: red;
+    margin: 8px 10px 0 0;
+    float:left;
+    border-radius: 50%;
+    &.check-in{ //this means .status.check-in
+        background-color: green;
+    }
+    &.check-out{ //this means .status.check-in
+        background-color: blue;
+    }
+}

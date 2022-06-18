@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector:"app-root-ref",
+    selector:"ref",
     styleUrls: ['app.component.scss'],
     template:`
         <div class="app-ref">
