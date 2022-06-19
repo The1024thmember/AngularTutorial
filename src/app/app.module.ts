@@ -8,11 +8,21 @@ import { Toggle } from "./app.toggle.component";
 import { Looping } from "./app-looping-component";
 import { Mypipe } from "./app.mypipe.component";
 import { Mynav } from "./app.navigation.component";
-import { PassengerDashboardsMoudle } from "./passenger-dashboard/passenger.dashboards.module"
+import { PassengerDashboardsMoudle } from "./passenger-dashboard/passenger.dashboards.module";
+import { HomeComponent } from "./home.component"; 
 import { AppComponent } from "./app.component";
+import { RouterModule, Routes } from "@angular/router";
+import { NotFoundComponent } from "./notfound.component";
+
+const routes: Routes = [
+  { path: '', component: HomeComponent, pathMatch:"full" },
+  { path: '**', component: NotFoundComponent, pathMatch:"full" }
+];
+
 @NgModule({
   declarations: [
     TwoWayBindingcomponent,
+    HomeComponent,
     RefDemo,
     Toggle,
     Looping,
@@ -25,6 +35,7 @@ import { AppComponent } from "./app.component";
     BrowserModule,
     CommonModule,
     FormsModule,
+    RouterModule.forRoot(routes),
 
     //customer module
     PassengerDashboardsMoudle
