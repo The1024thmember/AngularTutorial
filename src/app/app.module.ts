@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'Toggle', component: Toggle, pathMatch:"full" },
   { path: 'Looping', component: Looping, pathMatch:"full" },
   { path: 'Mypipe', component: Mypipe, pathMatch:"full" },
-  { path: 'Mynav', component: Mynav, pathMatch:"full" },
+  { path: 'Mynav', redirectTo: "oops", pathMatch:"full" },
   { path: '**', component: NotFoundComponent, pathMatch:"full" },
 ];
 
@@ -41,7 +41,7 @@ const routes: Routes = [
     BrowserModule,
     CommonModule,
     FormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {useHash:true}),
 
     //customer module
     PassengerDashboardsMoudle

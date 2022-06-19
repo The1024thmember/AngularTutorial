@@ -7,6 +7,9 @@ import { Passenger } from "../../models/passenger.interface";
     styleUrls: ['passenger.dashboard.component.scss'],
     template:`
         <div class="app-nav">
+            <h2>Passenger DashBoard Demo</h2>
+            <h3>Airline Passengers</h3> 
+            <h4>All passengers</h4>
             <div *ngFor="let passenger of passengers">
                 {{ passenger.fullname }}
             </div>
@@ -19,9 +22,6 @@ import { Passenger } from "../../models/passenger.interface";
                 (edit) = "handleEdit($event)"
                 (remove) = "handleRemove($event)"
             ></passenger-detail>
-            <h2>Passenger DashBoard Demo</h2>
-            <h3>Airline Passengers</h3> 
-
         </div>
     `
 })

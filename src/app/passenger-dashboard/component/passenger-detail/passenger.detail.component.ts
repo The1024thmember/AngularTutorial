@@ -1,7 +1,7 @@
 import { outputAst } from "@angular/compiler";
 import { Component, Input, Output , EventEmitter, OnChanges, SimpleChanges, OnInit} from "@angular/core";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Passenger } from "../../models/passenger.interface";
-
 
 @Component({
     selector:"passenger-detail",
@@ -44,7 +44,10 @@ export class PassengerDetail implements OnChanges, OnInit{
 
     editing: boolean = false;
 
-    constructor(){};
+    constructor(
+        private router: Router,
+        private route: ActivatedRoute
+    ){};
 
     ngOnChanges(changes: SimpleChanges): void {
         console.log(changes);

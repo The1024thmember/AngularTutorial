@@ -11,7 +11,8 @@ import { PassengerDetail } from "./component/passenger-detail/passenger.detail.c
 const routes: Routes = [
     {
         path: 'passengers',
-        component: PassengerDashboardsComponent
+        component: PassengerDashboardsComponent,
+        
     }
 ]
 
