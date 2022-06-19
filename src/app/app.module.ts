@@ -16,7 +16,13 @@ import { NotFoundComponent } from "./notfound.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch:"full" },
-  { path: '**', component: NotFoundComponent, pathMatch:"full" }
+  { path: 'TwoWayBindingcomponent', component: TwoWayBindingcomponent, pathMatch:"full" },
+  { path: 'RefDemo', component: RefDemo, pathMatch:"full" },
+  { path: 'Toggle', component: Toggle, pathMatch:"full" },
+  { path: 'Looping', component: Looping, pathMatch:"full" },
+  { path: 'Mypipe', component: Mypipe, pathMatch:"full" },
+  { path: 'Mynav', component: Mynav, pathMatch:"full" },
+  { path: '**', component: NotFoundComponent, pathMatch:"full" },
 ];
 
 @NgModule({
